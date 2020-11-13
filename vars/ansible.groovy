@@ -4,7 +4,7 @@ def call(){
     agent any
     
     stages {
-        stage('ansible_lynt') {
+        stage('Lynt') {
             steps {
                 sh "ansible-playbook apply_role.yml --syntax-check"
             }
@@ -15,12 +15,6 @@ def call(){
                 sshagent(['ec2-user']) {
                     sh "ansible-playbook apply_role.yml"
                 }
-            }
-        }
-
-        stage('test') {
-            steps {
-                sh "echo ansible run complete"
             }
         }
 
