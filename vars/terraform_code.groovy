@@ -6,6 +6,11 @@ def call(){
         terraform 'terraform07'
     } 
     stages {
+        stage('init') {
+            steps {
+                sh 'teraform init'
+            }
+        }
         stage('Plan') {
             steps {
                 sh "terraform plan"
