@@ -8,7 +8,7 @@ def call(){
     stages {
         stage('init') {
             steps {
-                sh 'teraform init'
+                sh 'terraform init'
             }
         }
         stage('Plan') {
