@@ -13,13 +13,18 @@ def call(){
         }
         stage('Plan') {
             steps {
-                sh "terraform plan"
+                withAWS(credentials: 'awskeys', region: 'usveast-1') {
+                    sh "terraform plan --var=dev.tfvars"
+                }
+                
             }
         }
 
         stage('Apply') {
             steps {
-                sh "terraform apply"
+                withAWS(credentials: 'awskeys', region: 'usveast-1') {
+                    sh "terraform apply --var=dev.tfvars"
+                }
             }
         }
 
